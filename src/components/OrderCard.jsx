@@ -32,7 +32,7 @@ function OrderCard({ order }) {
       value: 'info',
       icon: <IoReceiptOutline size={20} className='mr-2' />,
       content: <OrderInfo
-        id={order.id}
+        id={order._id}
         quantity={order.totalProducts}
         subtotal={order.subTotal}
         iva={order.iva}
@@ -106,7 +106,7 @@ function OrderCard({ order }) {
             <ConfirmModal
               isOpen={isModalOpen}
               onClose={() => setIsModalOpen(false)}
-              onConfirm={() => cancellOrder(order.id)}
+              onConfirm={() => cancellOrder(order._id)}
               title={"Cancelar Pedido"}
               text={"Estas seguro que deseas cancelar este pedido? Esta accion no se puede deshacer"}
               btnAccept={"Confirmar"}
