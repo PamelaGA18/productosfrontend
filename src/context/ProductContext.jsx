@@ -180,9 +180,9 @@ export function ProductsProvider({ children }) {
     };//Fin de updateAddress
 
     //Funcion para actualizar el estado de los datos de pago 
-    const updatePaymet = (values) =>{
+    const updatePayment = (values) =>{
         setPayment(values);
-    }; //Fin de updateAddress
+    }; //Fin de updatePayment
 
     //Funcion para inicializar un pedido 
     const initOrder = ()=>{
@@ -239,7 +239,7 @@ export function ProductsProvider({ children }) {
             address,
             updateAddress,
             payment,
-            updatePaymet,
+            updatePayment,
             initOrder,
             stepOrder,
             updateStepOrder,

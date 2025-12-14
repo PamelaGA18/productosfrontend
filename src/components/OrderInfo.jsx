@@ -31,15 +31,15 @@ function OrderInfo({id, quantity, subtotal, iva, total, status, orderDate}) {
         </div>
         <div className="flex justify-between">
             <span className="font-semibold">Subtotal:</span>
-            <span>${subtotal.toFixed(2)}</span>
+            <span>${subtotal?.toFixed(2) || '0.00'}</span>
         </div>
         <div className="flex justify-between">
             <span className="font-semibold">IVA:</span>
-            <span>${iva.toFixed(2)}</span>
+            <span>${iva?.toFixed(2) || '0.00'}</span>
         </div>
         <div className="flex justify-between">
             <span className="font-semibold">Total:</span>
-            <span>${total.toFixed(2)}</span>
+            <span>${total?.toFixed(2) || '0.00'}</span>
         </div>
         <div className="flex justify-between">
             <span className="font-semibold">Fecha del pedido:</span>

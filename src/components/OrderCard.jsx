@@ -33,7 +33,7 @@ function OrderCard({order}) {
     content: <OrderInfo
       id={order.id}
       quantity={order.totalProducts}
-      subtotal={order.subtotal}
+      subtotal={order.subTotal}
       iva={order.iva}
       total={order.total}
       status={order.status}
@@ -46,26 +46,16 @@ function OrderCard({order}) {
     icon: <IoCartOutline size={20} className='mr-2'/>,
     content: <CartInfo cart={order.items} />
   },
-{
-  label: 'Datos de envío',
-  value: 'shipping',
-  icon: <IoRocketOutline size={20} className='mr-2'/>,
-  content: <ShippingInfo
-    name={order.paymentMethod.shippingAddress.name}
-    address={order.paymentMethod.shippingAddress.address}
-    phone={order.paymentMethod.shippingAddress.phone}
-  />
-},
-{
-  label: 'Detalle de pago',
-  value: 'payment',
-  icon: <IoStorefrontOutline size={20} className='mr-2'/>,  
-  content: <PaymentInfo
-    method={order.paymentMethod.method}
-    cardDetails={order.paymentMethod.cardDetails}
-    userName={order.paymentMethod.userName}
-  />
-}
+  {
+    label: 'Detalle de pago',
+    value: 'payment',
+    icon: <IoStorefrontOutline size={20} className='mr-2'/>,  
+    content: <PaymentInfo
+      method={order.paymentMethod.method}
+      cardDetails={order.paymentMethod.cardDetails}
+      userName={order.paymentMethod.userName}
+    />
+  }
 ];//fin de array tabs
 
 if (order.paymentMethod.method === "card"){
@@ -122,7 +112,7 @@ const handleDeleteOrder = (orderId) => {
             btnCancel={"Cancelar"}
         />
         <Tooltip title="Actulizar estado de orden"
-                      className={isAdmin() ? '' : 'hidden'}>
+                      className={isAdmin ? '' : 'hidden'}>
         <button
             className='bg-green-400 hover:bg-green-500 text-white p2 rounded-lg text-sm'
             onClick={ ()=>{}}

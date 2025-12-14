@@ -39,6 +39,13 @@ function SalesPage() {
     initOrder();
   }, []); //Fin de useEffect
 
+  //UseEffect para finalizar la venta cuando stepOrder es 4
+  useEffect(() => {
+    if (stepOrder === 4) {
+      finalizingSale();
+    }
+  }, [stepOrder]);
+
   const finalizingSale = () => {
 
     if(isProcesing.current) {
@@ -66,8 +73,8 @@ function SalesPage() {
         price: item.price.toFixed(2),
       })),
       paymentMethod: paymentData,
-      totalProducts: getTotalProducts.toFixed(0),
-      subtotal: calculateSubTotal.toFixed(2),
+      totalProducts: getTotalProducts().toFixed(0),
+      subTotal: calculateSubTotal.toFixed(2),
       total: calculateTotal.toFixed(2),
       iva: calculateIva(calculateSubTotal).toFixed(2),
       status: "received",
@@ -130,7 +137,7 @@ function SalesPage() {
         {stepOrder === 1 && <CartResume />}
         {stepOrder === 2 && <AddPayment />}
         {stepOrder === 3 && <AddAddress />}
-        {stepOrder === 4 && finalizingSale()}
+        {stepOrder === 4 && <div className="text-center p-8">Procesando pedido...</div>}
       </div>
     </div>
   );
