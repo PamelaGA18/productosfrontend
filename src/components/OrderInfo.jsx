@@ -1,5 +1,5 @@
 import OrderStatus from './OrderStatus';
-import SelectOrderStatus from './SelectedOrderStatus';
+import SelectOrderStatus from './SelectOrderStatus';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import { updateStatusOrder } from '../services/orderService';
