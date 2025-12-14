@@ -17,45 +17,55 @@ import Cart from "./components/Cart";
 import SalesPage from "./pages/SalesPage";
 import { OrdersProvider } from "./context/OrderContext";
 import OrdersPage from "./pages/OrdersPage";
+import IdValidator from './context/IdValidator';
 
 function App() {
   return (
     <AuthProvider>
       <ProductsProvider>
         <OrdersProvider>
-        <BrowserRouter>
-          <main className="container mx-auto px-10">
-            <Navbar />
-            <ToastContainer
-              position="top-right"
-              autoClose={3000}
-              limit={3}
-              hideProgressBar={false}
-              theme="light"
-            />
-            <Routes>
-              {/*Rutas públicas*/}
-              <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
+          <BrowserRouter>
+            <main className="container mx-auto px-10">
+              <Navbar />
+              <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                limit={3}
+                hideProgressBar={false}
+                theme="light"
+              />
+              <Routes>
+                {/*Rutas públicas*/}
+                <Route path="/" element={<HomePage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
 
-              {/* Sección de rutas protegidas */}
-              <Route element={<ProtectedRoute />}>
-                <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/products" element={<ProductsPage />} />
-                <Route path="/add-product" element={<ProductsFormPage />} />
-                <Route path="/products/:id" element={<ProductsFormPage />} />
-                <Route path="/getallproducts" element={<AllProductsPage />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/sale" element={<SalesPage />} />
-                <Route path="/orders" element={<OrdersPage />} />
-              </Route>
+                {/* Sección de rutas protegidas */}
+                <Route element={<ProtectedRoute />}>
+                  <Route path="/profile" element={<ProfilePage />} />
+                  <Route path="/products" element={<ProductsPage />} />
+                  <Route path="/add-product" element={<ProductsFormPage />} />
 
-              {/* Ruta 404 para rutas no existentes*/}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-        </BrowserRouter>
+                  {/* Ruta con validacion de Id */}
+                  <Route
+                    path="/products/:id"
+                    element={
+                      <IdValidator>
+                        <ProductsFormPage />
+                      </IdValidator>
+                    }
+                  />
+                  <Route path="/getallproducts" element={<AllProductsPage />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/sale" element={<SalesPage />} />
+                  <Route path="/orders" element={<OrdersPage />} />
+                </Route>
+
+                {/* Ruta 404 para rutas no existentes*/}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+          </BrowserRouter>
         </OrdersProvider>
       </ProductsProvider>
     </AuthProvider>
