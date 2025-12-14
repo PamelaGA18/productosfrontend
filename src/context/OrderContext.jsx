@@ -33,8 +33,7 @@ const getOrders = async () => {
         if (isAdmin)
             res = await getOrdersRequest();
         else
-            res = await getUserOrderRequest();
-            
+            res = await getUserOrderRequest();         
         setOrders(res.data);
     } catch (error) {
         toast.error("Error al obtener las ordenes");
@@ -59,9 +58,9 @@ const updateStatusOrder = async (id, status) => {
     try {
         await updateStatsOrderRequest(id, status);
         await getOrders();
-        toast.success("Estado de la orden actualizado con éxito" + status.status);
+        toast.success("Status de la orden actualizado con éxito" + status.status);
     } catch (error) {
-        toast.error("Error al actualizar el estado de la orden");
+        toast.error("Error al actualizar el status de la orden");
         setErrors(error.response.data.message);
     }
 }; //Fin de updateStatusOrder
@@ -82,9 +81,9 @@ const deleteOrder = async ( id ) =>{
     try {
         await deleteOrderRequest(id);
         await getOrders();
-        toast.success("Orden eliminada con éxito");
+        toast.success("Orden eliminada correctamente");
     } catch (error) {
-        toast.error("Error al eliminar la orden");
+        toast.error("Error al eliminar una orden");
         setErrors(error.response.data.message);
     }
 }; //Fin de deleteOrder

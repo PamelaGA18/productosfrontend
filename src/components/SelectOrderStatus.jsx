@@ -18,6 +18,7 @@ function SelectOrderStatus({status, onChange}){
 
     //Si el estado es 'cancelled', deshabilitamos el select    
     const isDisabled = status === 'cancelled';
+    
     return(
         <div className="relative flex select text-xs">
             <div className="flex items-center space-x-3 mb-4">

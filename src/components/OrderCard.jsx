@@ -96,8 +96,7 @@ function OrderCard({ order }) {
           <div>
             <Tooltip title="Cancelar Orden">
               <button
-                className='bg-red-400 hover:bg-red-500 text-white p2
-                          rounded-lg text-sm'
+                className='bg-red-400 hover:bg-red-500 text-white p2 rounded-lg text-sm'
                 onClick={() => setIsModalOpen(true)}
               >
                 <MdOutlineCancel size={30} />

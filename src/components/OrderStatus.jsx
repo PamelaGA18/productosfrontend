@@ -1,6 +1,6 @@
 import { FaBox, FaCheckCircle, FaTimesCircle, FaTruck } from 'react-icons/fa';
 
-function OrderStatus({ status }) {
+function OrderStatus({ status, showLabel }) {
     //Objeto de mapeo para los iconos y colores
     const statusConfig = {
             received: {
@@ -30,7 +30,7 @@ function OrderStatus({ status }) {
     return (
         <span className='inline-flex items-center'>
             <config.icon size={20} className={`${config.color} mr-1`} />
-            <span>{config.label}</span>
+            { showLabel && <span>{config.label}</span>}
         </span>
     );
 }
