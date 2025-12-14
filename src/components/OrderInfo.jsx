@@ -2,10 +2,12 @@ import OrderStatus from './OrderStatus';
 import SelectOrderStatus from './SelectOrderStatus';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
-import { updateStatusOrder } from '../services/orderService';
+import { useOrders } from '../context/OrderContext';
+
 
 function OrderInfo({ id, quantity, subtotal, iva, total, status, orderDate }) {
     const { isAdmin } = useAuth();
+    const { updateStatusOrder } = useOrders();
     // Función para formatear la fecha de manera amigable
     const formatDate = (dateString) => {
         const options = {
@@ -25,7 +27,7 @@ function OrderInfo({ id, quantity, subtotal, iva, total, status, orderDate }) {
             toast.error("No se puede actualizar el estado de una orden entregada");
             return;
         }
-        updateStatusOrder(id, { status: newStatus })
+        updateStatusOrder(id,{status: newStatus})
     };//Fin de handleStatusChange
 
     return (
