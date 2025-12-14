@@ -159,7 +159,7 @@ function RegisterPage() {
                         </span>
                     </Tooltip>
                     <ReCaptcha
-                        sitekey="6Ld0DSksAAAAAF5NlcTYHiSlHyXZjHmpvT2KVC1L"
+                        sitekey="6Lc_GSssAAAAAM8bXrI0vOggKQnpq93rVjrErmP6"
                         onChange={ (value)=>setCaptchaValue(value)}
                         aria-hidden="false" 
                 />
